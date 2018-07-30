@@ -11,6 +11,7 @@ namespace SimplePaint
 {
     class EngineGL
     {
+        private static SimpleOpenGlControl Canvas;
 
         private EngineGL()
         {
@@ -30,7 +31,7 @@ namespace SimplePaint
 
             //Инициализация библиотеки
             Glut.glutInit();
-
+            Canvas = mainGraphicPanel;
             Canvas_Init(mainGraphicPanel.Height, mainGraphicPanel.Width);
 
             return new EngineGL();
@@ -71,12 +72,30 @@ namespace SimplePaint
         }
         #endregion
 
+        /// <summary>
+        /// Основной метод отрисовки
+        /// </summary>
         internal void Drawing()
         {
-            throw new NotImplementedException();
+            //очистка буферов цвета и глубины
+            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
+            //очистка текущей матрицы
+            Gl.glLoadIdentity();
+            //установка черного цвета
+            Gl.glColor3f(0, 0, 0);
+
+            DrawObjects();
+
+            Gl.glFlush();
+            Canvas.Invalidate();
         }
 
-       
-
+        /// <summary>
+        /// Визуализация объектов
+        /// </summary>
+        private void DrawObjects()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
