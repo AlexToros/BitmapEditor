@@ -31,7 +31,7 @@ namespace SimplePaint
         }
         private void RenderTimer_Tick(object sender, EventArgs e)
         {
-
+            Engine.Drawing();
         }
     }
 }

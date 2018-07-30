@@ -11,10 +11,18 @@ namespace SimplePaint
 {
     class EngineGL
     {
+
         private EngineGL()
         {
                 
         }
+
+        #region Статические методы инициализации движка
+        /// <summary>
+        /// Первичная инициализация движка. Инициализация библиотеки и холста.
+        /// </summary>
+        /// <param name="mainGraphicPanel">OpenGL Control</param>
+        /// <returns>Экземпляр движка</returns>
         public static EngineGL InitializeEngine(SimpleOpenGlControl mainGraphicPanel)
         {
             mainGraphicPanel.InitializeContexts();
@@ -27,15 +35,24 @@ namespace SimplePaint
 
             return new EngineGL();
         }
-
+        /// <summary>
+        /// Обработчик изменения размеров холста
+        /// </summary>
+        /// <param name="sender">OpenGL Control</param>
+        /// <param name="e"></param>
         private static void MainGraphicPanel_Resize(object sender, EventArgs e)
         {
             SimpleOpenGlControl p = (SimpleOpenGlControl)sender;
             Canvas_Init(p.Height, p.Width);
         }
 
+        /// <summary>
+        /// Инициализация холста при первичной инициализации и изменении размеров
+        /// </summary>
+        /// <param name="ScreenHeight">Ширина холста</param>
+        /// <param name="ScreenWidth">Высота холста</param>
         private static void Canvas_Init(int ScreenHeight, int ScreenWidth)
-        {            
+        {
             //режим окна
             Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
             //цвет очистки окна
@@ -52,6 +69,14 @@ namespace SimplePaint
             //переход к объектно-видовой матрице
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
+        #endregion
+
+        internal void Drawing()
+        {
+            throw new NotImplementedException();
+        }
+
+       
 
     }
 }
