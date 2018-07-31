@@ -15,22 +15,26 @@ namespace SimplePaint
         /// модель холста. Координаты пикселя и его цвет
         /// </summary>
         public int[,,] DrawPlace { get; private set; }
-        public int Width { get; private set; }
-        public int Heigth { get; private set; }
+        public int Width { get; set; }
+        public int Heigth { get; set; }
         public bool IsVisible { get; set; }
-
+        
         public Layer(int width, int heigth)
         {
             Width = width;
             Heigth = heigth;
-            DrawPlace = new int[width, Heigth, 4];//4 - RGBA
-            for (int i = 0; i < width; i++)
-                for (int j = 0; j < heigth; j++)
-                    DrawPlace[i, j, 3] = 1;//прозрачность
+            DrawArrayInit();
             IsVisible = true;
             ActiveColor = Color.Black;
+            
         }
-
+        public void DrawArrayInit()
+        {
+            DrawPlace = new int[Width, Heigth, 4];//4 - RGBA
+            for (int i = 0; i < Width; i++)
+                for (int j = 0; j < Heigth; j++)
+                    DrawPlace[i, j, 3] = 1;//прозрачность
+        }
         /// <summary>
         /// Рисование на слое
         /// </summary>

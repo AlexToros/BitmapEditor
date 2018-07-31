@@ -18,6 +18,7 @@ namespace SimplePaint
         {
             InitializeComponent();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeOpenGL();
@@ -35,7 +36,13 @@ namespace SimplePaint
         private void AnT_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                ;
+                Engine.Draw(e.X, AnT.Height - e.Y);
         }
+
+        private void AnT_Click(object sender, EventArgs e)
+        {
+            AnT_MouseMove(sender, (MouseEventArgs)e);
+        }
+        
     }
 }
