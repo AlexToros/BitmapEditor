@@ -22,6 +22,11 @@ namespace SimplePaint
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeOpenGL();
+            LayersListBox.Items.AddRange(Engine.Layers.ToArray());
+            for (int i = 0; i < Engine.LayersCount; i++)
+            {
+                if (Engine.Layers[i].IsVisible) LayersListBox.SetItemChecked(i, true);
+            }
         }
         private void InitializeOpenGL()
         {
@@ -43,6 +48,12 @@ namespace SimplePaint
         {
             AnT_MouseMove(sender, (MouseEventArgs)e);
         }
-        
+
+        private void LayersListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            Layer l = (Layer)LayersListBox.SelectedItem;
+            if (l != null)
+                l.IsVisible = e.NewValue == CheckState.Checked ? true : false;
+        }
     }
 }

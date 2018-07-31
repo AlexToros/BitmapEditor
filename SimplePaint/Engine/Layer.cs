@@ -15,12 +15,14 @@ namespace SimplePaint
         /// модель холста. Координаты пикселя и его цвет
         /// </summary>
         public int[,,] DrawPlace { get; private set; }
-        public int Width { get; set; }
-        public int Heigth { get; set; }
+        public int Width { get; private set; }
+        public int Heigth { get; private set; }
         public bool IsVisible { get; set; }
+        public string Name { get; set; }
         
-        public Layer(int width, int heigth)
+        public Layer(string name, int width, int heigth)
         {
+            Name = name;
             Width = width;
             Heigth = heigth;
             DrawArrayInit();
@@ -67,18 +69,25 @@ namespace SimplePaint
         /// </summary>
         public void Render()
         {
-            Gl.glBegin(Gl.GL_POINTS);
+            if (IsVisible)
+            {
+                Gl.glBegin(Gl.GL_POINTS);
 
-            for (int i = 0; i < Width; i++)
-                for (int j = 0; j < Heigth; j++)
-                {
-                    if (DrawPlace[i, j, 3] != 1)
+                for (int i = 0; i < Width; i++)
+                    for (int j = 0; j < Heigth; j++)
                     {
-                        Gl.glColor3f(DrawPlace[i, j, 0], DrawPlace[i, j, 1], DrawPlace[i, j, 2]);
-                        Gl.glVertex2i(i, j);
+                        if (DrawPlace[i, j, 3] != 1)
+                        {
+                            Gl.glColor3f(DrawPlace[i, j, 0], DrawPlace[i, j, 1], DrawPlace[i, j, 2]);
+                            Gl.glVertex2i(i, j);
+                        }
                     }
-                }
-            Gl.glEnd();
+                Gl.glEnd();
+            }
+        }
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

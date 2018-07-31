@@ -32,12 +32,14 @@ namespace SimplePaint
         /// </summary>
         private int scroll_x, scroll_y;
 
-        private List<Layer> Layers = new List<Layer>();
+        public List<Layer> Layers { get; private set; }
 
         /// <summary>
         /// Активный слой
         /// </summary>
-        public Layer ActivetLayer { get; set; }
+        public Layer ActiveLayer { get; set; }
+
+        public int LayersCount { get => Layers.Count; }
 
         private Brush StandartBrush;
 
@@ -46,6 +48,7 @@ namespace SimplePaint
 
         public EngineGL(SimpleOpenGlControl mainGraphicPanel, int picture_width, int picture_height)
         {
+            Layers = new List<Layer>();
             Canvas_Init(mainGraphicPanel.Height, mainGraphicPanel.Width);
 
             Canvas = mainGraphicPanel;
@@ -58,8 +61,8 @@ namespace SimplePaint
             scroll_x = 0;
             scroll_y = 0;
 
-            ActivetLayer = new Layer(picture_width,picture_height);
-            Layers.Add(ActivetLayer);
+            ActiveLayer = new Layer("Главный слой", picture_width, picture_height);
+            Layers.Add(ActiveLayer);
             StandartBrush = new Brush();
         }
 
@@ -124,7 +127,7 @@ namespace SimplePaint
 
         public void SetActiveLayer(Layer Layer)
         {
-            ActivetLayer = Layer;
+            ActiveLayer = Layer;
         }
 
         public void SetLayerVisibility(int LayerIndx, bool visible)
@@ -173,7 +176,7 @@ namespace SimplePaint
         /// <param name="y">Координата Y</param>
         internal void Draw(int x, int y)
         {
-            ActivetLayer.Draw(StandartBrush, x, y);
+            ActiveLayer.Draw(StandartBrush, x, y);
         }
 
         #endregion
