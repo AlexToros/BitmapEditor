@@ -71,7 +71,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 398);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 423);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -102,7 +102,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 398);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 423);
             this.splitContainer1.SplitterDistance = 566;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -119,7 +119,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(563, 392);
+            this.AnT.Size = new System.Drawing.Size(563, 417);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             // 

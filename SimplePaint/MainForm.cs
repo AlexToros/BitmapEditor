@@ -12,13 +12,12 @@ namespace SimplePaint
 {
     public partial class MainForm : Form
     {
-        private static EngineGL Engine;
+        private EngineGL Engine;
 
         public MainForm()
         {
             InitializeComponent();
         }
-        Action ac;
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeOpenGL();
@@ -26,13 +25,11 @@ namespace SimplePaint
         private void InitializeOpenGL()
         {
             Engine = EngineGL.InitializeEngine(AnT);
-            ac = Engine.Drawing;
             RenderTimer.Start();
-            
         }
         private void RenderTimer_Tick(object sender, EventArgs e)
         {
-            ac.Invoke();
+            Engine.Drawing();
         }
     }
 }
