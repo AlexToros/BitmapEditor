@@ -46,6 +46,7 @@ namespace SimplePaint
 
         private void AnT_MouseMove(object sender, MouseEventArgs e)
         {
+            Engine.SystemDraw(e.X, AnT.Height - e.Y);
             if (e.Button == MouseButtons.Left)
                 Engine.Draw(e.X, AnT.Height - e.Y);
         }
@@ -86,6 +87,15 @@ namespace SimplePaint
                 }
             }
         }
-        
+
+        private void EraserTool_Click(object sender, EventArgs e)
+        {
+            Engine.CurrentBrush = new EraseBrush(30);
+        }
+
+        private void BrushTool_Click(object sender, EventArgs e)
+        {
+            Engine.CurrentBrush = new Brush();
+        }
     }
 }

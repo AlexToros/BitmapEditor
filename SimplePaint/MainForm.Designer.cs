@@ -38,6 +38,9 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.MainTools = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
@@ -74,7 +77,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 383);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -105,7 +108,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 383);
             this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -122,7 +125,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(562, 402);
+            this.AnT.Size = new System.Drawing.Size(562, 377);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
@@ -145,10 +148,13 @@
             this.ModeToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripButton6,
+            this.toolStripButton7,
+            this.toolStripButton8});
             this.ModeToolStrip.Location = new System.Drawing.Point(0, 3);
             this.ModeToolStrip.Name = "ModeToolStrip";
-            this.ModeToolStrip.Size = new System.Drawing.Size(24, 32);
+            this.ModeToolStrip.Size = new System.Drawing.Size(24, 101);
             this.ModeToolStrip.TabIndex = 0;
             // 
             // toolStripButton1
@@ -174,6 +180,33 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(22, 4);
             this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton6.Text = "Errase";
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton7.Text = "toolStripButton7";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton8.Text = "toolStripButton8";
             // 
             // MainTools
             // 
@@ -276,14 +309,16 @@
             // BrushTool
             // 
             this.BrushTool.Name = "BrushTool";
-            this.BrushTool.Size = new System.Drawing.Size(130, 22);
+            this.BrushTool.Size = new System.Drawing.Size(152, 22);
             this.BrushTool.Text = "Кисть";
+            this.BrushTool.Click += new System.EventHandler(this.BrushTool_Click);
             // 
             // EraserTool
             // 
             this.EraserTool.Name = "EraserTool";
             this.EraserTool.Size = new System.Drawing.Size(130, 22);
             this.EraserTool.Text = "Ластик";
+            this.EraserTool.Click += new System.EventHandler(this.EraserTool_Click);
             // 
             // LayersMenu
             // 
@@ -310,7 +345,7 @@
             // 
             // RenderTimer
             // 
-            this.RenderTimer.Interval = 30;
+            this.RenderTimer.Interval = 10;
             this.RenderTimer.Tick += new System.EventHandler(this.RenderTimer_Tick);
             // 
             // MainForm
@@ -373,6 +408,9 @@
         private System.Windows.Forms.Timer RenderTimer;
         private System.Windows.Forms.ToolStripButton AddLayerButton;
         private System.Windows.Forms.ToolStripButton RemoveLayerButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
     }
 }
 

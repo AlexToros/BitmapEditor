@@ -26,19 +26,18 @@ namespace SimplePaint
             Name = name;
             Width = width;
             Heigth = heigth;
+            DrawPlace = new int[Width, Heigth, 4];
             DrawArrayInit();
             IsVisible = true;
-            ActiveColor = Color.Black;
-            
+            ActiveColor = Color.Black;            
         }
         public Layer(string name, int width, int heigth, bool visibility) :
             this(name, width, heigth)
         {
             IsVisible = visibility;
         }
-        public void DrawArrayInit()
+        protected void DrawArrayInit()
         {
-            DrawPlace = new int[Width, Heigth, 4];//4 - RGBA
             for (int i = 0; i < Width; i++)
                 for (int j = 0; j < Heigth; j++)
                     DrawPlace[i, j, 3] = 1;//прозрачность
@@ -49,7 +48,7 @@ namespace SimplePaint
         /// <param name="br">кисть</param>
         /// <param name="x">координата по оси x</param>
         /// <param name="y">координата по оси y</param>
-        public void Draw(Brush br, int x, int y)
+        public virtual void Draw(Brush br, int x, int y)
         {
             if (IsVisible)
             {
@@ -58,7 +57,7 @@ namespace SimplePaint
 
                 int boundary_x = real_x + br.Width > Width ? Width : real_x + br.Width;
                 int boundary_y = real_y + br.Height > Heigth ? Heigth : real_y + br.Height;
-
+                
                 for (int i = real_x, br_x = 0; i < boundary_x; i++, br_x++)
                     for (int j = real_y, br_y = 0; j < boundary_y; j++, br_y++)
                     {
@@ -67,8 +66,9 @@ namespace SimplePaint
                             DrawPlace[i, j, 0] = ActiveColor.R;
                             DrawPlace[i, j, 1] = ActiveColor.G;
                             DrawPlace[i, j, 2] = ActiveColor.B;
-                            DrawPlace[i, j, 3] = 0;
+                            DrawPlace[i, j, 3] = br.IsErase ? 1 : 0;
                         }
+                        
                     }
             }
         }

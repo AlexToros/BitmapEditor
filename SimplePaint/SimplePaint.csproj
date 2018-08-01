@@ -51,9 +51,11 @@
     <Reference Include="Tao.Platform.Windows, Version=1.0.0.5, Culture=neutral, PublicKeyToken=701104b2da67a104" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\Brush.cs" />
+    <Compile Include="Engine\Brushes\Brush.cs" />
+    <Compile Include="Engine\Brushes\EraseBrush.cs" />
     <Compile Include="Engine\EngineGL.cs" />
-    <Compile Include="Engine\Layer.cs" />
+    <Compile Include="Engine\Layers\HiddenLayer.cs" />
+    <Compile Include="Engine\Layers\Layer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

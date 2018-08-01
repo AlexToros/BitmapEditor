@@ -42,13 +42,16 @@ namespace SimplePaint
 
         public int LayersCount { get => Layers.Count; }
 
-        private Brush StandartBrush;
+        public Brush CurrentBrush { get; set; }
 
+
+        private Layer HiddenLayer;
         private EngineGL()
         { }
 
         public EngineGL(SimpleOpenGlControl mainGraphicPanel, int picture_width, int picture_height)
         {
+            HiddenLayer = new HiddenLayer(picture_width, picture_height);
             Layers = new List<Layer>();
             Canvas_Init(mainGraphicPanel.Height, mainGraphicPanel.Width);
 
@@ -64,7 +67,7 @@ namespace SimplePaint
 
             ActiveLayer = new Layer("Главный слой", picture_width, picture_height);
             Layers.Add(ActiveLayer);
-            StandartBrush = new Brush();
+            CurrentBrush = new Brush();
         }
 
         #region Mетоды инициализации движка
@@ -166,8 +169,9 @@ namespace SimplePaint
         /// Визуализация слоев
         /// </summary>
         private void DrawLayers()
-        {
+        {            
             Layers.ForEach(l => l.Render());
+            HiddenLayer.Render();
         }
 
         /// <summary>
@@ -177,13 +181,18 @@ namespace SimplePaint
         /// <param name="y">Координата Y</param>
         internal void Draw(int x, int y)
         {
-            ActiveLayer.Draw(StandartBrush, x, y);
+            ActiveLayer.Draw(CurrentBrush, x, y);
+        }
+        internal void SystemDraw(int x, int y)
+        {
+            HiddenLayer.Draw(CurrentBrush, x, y);
         }
 
         public void SetColor(Color color)
         {
             Layer.ActiveColor = color;
         }
+        
         #endregion
     }
 }
