@@ -9,11 +9,11 @@ namespace SimplePaint
 {
     class EraseBrush : Brush
     {
-        public EraseBrush(int size) : base(size)
+        public EraseBrush(int width, int height) : base(width, height)
         {
             IsErase = true;
         }
-        public EraseBrush() : this(5) { }
+        public EraseBrush() : this(5,5) { }
         public override void InitializeBrush()
         {
             for (int i = 1; i < BrushMap.GetLength(0) - 1; i++)

@@ -14,25 +14,18 @@ namespace SimplePaint
         /// </summary>
         protected bool[,] BrushMap { get; set; }
         public bool IsErase { get; set; }
-        public int Size
-        {
-            get { return BrushMap.GetLength(0); }
-            set
-            {
-                BrushMap = new bool[value, value];
-                InitializeBrush();
-            }
-        }
+        
         public bool this[int x, int y] { get { return BrushMap[x, y]; } }
 
         public int Width { get { return BrushMap.GetLength(0); } }
         public int Height { get { return BrushMap.GetLength(1); } }
 
-        public Brush(int size)
+        public Brush(int width, int height)
         {
-            Size = size;
+            BrushMap = new bool[width, height];
+            InitializeBrush();
         }
-        public Brush() : this(5) { }
+        public Brush() : this(5, 5) { }
 
         public virtual void InitializeBrush()
         {
