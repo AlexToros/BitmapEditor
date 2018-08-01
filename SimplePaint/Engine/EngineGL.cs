@@ -139,6 +139,24 @@ namespace SimplePaint
         {
             Layer.IsVisible = visible;
         }
+
+        public void AddLayer(string name, bool visibility)
+        {
+            AddLayer(new Layer(name, picture_width, picture_height, visibility));
+            ActiveLayer = Layers.Last();
+        }
+
+        public void AddLayer(Layer new_layer)
+        {
+            Layers.Add(new_layer);
+            ActiveLayer = Layers.First();
+        }
+
+        public void DeleteActiveLayer()
+        {
+            if (ActiveLayer == Layers.First()) throw new InvalidOperationException("Невозможно удалить главный слой");
+            Layers.Remove(ActiveLayer);
+        }
         #endregion
 
         #region Методы рисования

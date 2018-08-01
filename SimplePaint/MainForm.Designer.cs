@@ -71,7 +71,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 398);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -83,7 +83,7 @@
             // toolStripContainer1.RightToolStripPanel
             // 
             this.toolStripContainer1.RightToolStripPanel.Controls.Add(this.MainTools);
-            this.toolStripContainer1.Size = new System.Drawing.Size(761, 423);
+            this.toolStripContainer1.Size = new System.Drawing.Size(761, 408);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -102,7 +102,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 398);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
             this.splitContainer1.SplitterDistance = 566;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -119,7 +119,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(563, 392);
+            this.AnT.Size = new System.Drawing.Size(563, 402);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
@@ -134,6 +134,7 @@
             this.LayersListBox.Size = new System.Drawing.Size(140, 229);
             this.LayersListBox.TabIndex = 0;
             this.LayersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LayersListBox_ItemCheck);
+            this.LayersListBox.SelectedIndexChanged += new System.EventHandler(this.LayersListBox_SelectedIndexChanged);
             // 
             // ModeToolStrip
             // 
@@ -273,12 +274,14 @@
             this.AddLayerTool.Name = "AddLayerTool";
             this.AddLayerTool.Size = new System.Drawing.Size(156, 22);
             this.AddLayerTool.Text = "Добавить слой";
+            this.AddLayerTool.Click += new System.EventHandler(this.AddLayerTool_Click);
             // 
             // RemoveLayerTool
             // 
             this.RemoveLayerTool.Name = "RemoveLayerTool";
             this.RemoveLayerTool.Size = new System.Drawing.Size(156, 22);
             this.RemoveLayerTool.Text = "Удалить слой";
+            this.RemoveLayerTool.Click += new System.EventHandler(this.RemoveLayerTool_Click);
             // 
             // RenderTimer
             // 
@@ -289,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 447);
+            this.ClientSize = new System.Drawing.Size(761, 432);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
