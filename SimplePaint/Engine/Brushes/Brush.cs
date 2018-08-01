@@ -20,6 +20,7 @@ namespace SimplePaint
         public int Width { get { return BrushMap.GetLength(0); } }
         public int Height { get { return BrushMap.GetLength(1); } }
 
+        public Brush(int squareSize) : this(squareSize, squareSize) { }
         public Brush(int width, int height)
         {
             BrushMap = new bool[width, height];

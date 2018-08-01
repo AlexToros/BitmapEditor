@@ -9,6 +9,7 @@ namespace SimplePaint
 {
     class EraseBrush : Brush
     {
+        public EraseBrush(int squareSize) : this(squareSize, squareSize) { }
         public EraseBrush(int width, int height) : base(width, height)
         {
             IsErase = true;

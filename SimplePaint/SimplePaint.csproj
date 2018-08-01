@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Brushes\Brush.cs" />
+    <Compile Include="Engine\Brushes\BrushFromFile.cs" />
     <Compile Include="Engine\Brushes\EraseBrush.cs" />
     <Compile Include="Engine\EngineGL.cs" />
     <Compile Include="Engine\Layers\HiddenLayer.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,6 +90,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\errase_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_brush_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\std_brush_pic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

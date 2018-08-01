@@ -97,5 +97,20 @@ namespace SimplePaint
         {
             Engine.CurrentBrush = new Brush();
         }
+
+        private void FileBrushButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BrushButton_Click(object sender, EventArgs e)
+        {
+            BrushTool_Click(sender, e);
+        }
+
+        private void ErraseButton_Click(object sender, EventArgs e)
+        {
+            EraserTool_Click(sender, e);
+        }
     }
 }
