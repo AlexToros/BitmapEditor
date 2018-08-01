@@ -10,7 +10,8 @@ namespace SimplePaint
 {
     class Layer
     {
-        private Color ActiveColor;
+
+        public static Color ActiveColor { get; set; }
         /// <summary>
         /// модель холста. Координаты пикселя и его цвет
         /// </summary>

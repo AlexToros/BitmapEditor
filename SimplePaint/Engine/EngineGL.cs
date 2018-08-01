@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Tao.Platform.Windows;
 
 namespace SimplePaint
 {
-    class EngineGL
+    class EngineGL 
     {
         /// <summary>
         /// Холст
@@ -120,26 +121,7 @@ namespace SimplePaint
         #endregion
 
         #region Методы над слоями
-        public void SetActiveLayer(int LayerIndx)
-        {
-            SetActiveLayer(Layers[LayerIndx]);
-        }
-
-        public void SetActiveLayer(Layer Layer)
-        {
-            ActiveLayer = Layer;
-        }
-
-        public void SetLayerVisibility(int LayerIndx, bool visible)
-        {
-            SetLayerVisibility(Layers[LayerIndx], visible);
-        }
-
-        public void SetLayerVisibility(Layer Layer, bool visible)
-        {
-            Layer.IsVisible = visible;
-        }
-
+       
         public void AddLayer(string name, bool visibility)
         {
             AddLayer(new Layer(name, picture_width, picture_height, visibility));
@@ -156,6 +138,7 @@ namespace SimplePaint
         {
             if (ActiveLayer == Layers.First()) throw new InvalidOperationException("Невозможно удалить главный слой");
             Layers.Remove(ActiveLayer);
+            ActiveLayer = Layers.First();
         }
         #endregion
 
@@ -197,6 +180,10 @@ namespace SimplePaint
             ActiveLayer.Draw(StandartBrush, x, y);
         }
 
+        public void SetColor(Color color)
+        {
+            Layer.ActiveColor = color;
+        }
         #endregion
     }
 }

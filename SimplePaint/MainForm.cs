@@ -37,6 +37,7 @@ namespace SimplePaint
             {
                 if (Engine.Layers[i].IsVisible) LayersListBox.SetItemChecked(i, true);
             }
+            LayersListBox.SelectedItem = Engine.ActiveLayer;
         }
         private void RenderTimer_Tick(object sender, EventArgs e)
         {
@@ -49,10 +50,7 @@ namespace SimplePaint
                 Engine.Draw(e.X, AnT.Height - e.Y);
         }
 
-        private void AnT_Click(object sender, EventArgs e)
-        {
-            AnT_MouseMove(sender, (MouseEventArgs)e);
-        }
+        private void AnT_Click(object sender, EventArgs e) => AnT_MouseMove(sender, (MouseEventArgs)e);
 
         private void LayersListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -88,5 +86,6 @@ namespace SimplePaint
                 }
             }
         }
+        
     }
 }

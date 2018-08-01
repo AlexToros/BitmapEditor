@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
@@ -40,6 +41,8 @@
             this.MainTools = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.AddLayerButton = new System.Windows.Forms.ToolStripButton();
+            this.RemoveLayerButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.NewBitmapTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +106,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.splitContainer1.Size = new System.Drawing.Size(713, 408);
-            this.splitContainer1.SplitterDistance = 566;
+            this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
             // AnT
@@ -119,7 +122,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(563, 402);
+            this.AnT.Size = new System.Drawing.Size(562, 402);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
@@ -131,7 +134,7 @@
             this.LayersListBox.FormattingEnabled = true;
             this.LayersListBox.Location = new System.Drawing.Point(0, 3);
             this.LayersListBox.Name = "LayersListBox";
-            this.LayersListBox.Size = new System.Drawing.Size(140, 229);
+            this.LayersListBox.Size = new System.Drawing.Size(141, 229);
             this.LayersListBox.TabIndex = 0;
             this.LayersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LayersListBox_ItemCheck);
             this.LayersListBox.SelectedIndexChanged += new System.EventHandler(this.LayersListBox_SelectedIndexChanged);
@@ -177,10 +180,12 @@
             this.MainTools.Dock = System.Windows.Forms.DockStyle.None;
             this.MainTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton4,
-            this.toolStripButton5});
+            this.toolStripButton5,
+            this.AddLayerButton,
+            this.RemoveLayerButton});
             this.MainTools.Location = new System.Drawing.Point(0, 3);
             this.MainTools.Name = "MainTools";
-            this.MainTools.Size = new System.Drawing.Size(24, 25);
+            this.MainTools.Size = new System.Drawing.Size(24, 71);
             this.MainTools.TabIndex = 0;
             // 
             // toolStripButton4
@@ -198,6 +203,26 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(22, 4);
             this.toolStripButton5.Text = "toolStripButton5";
+            // 
+            // AddLayerButton
+            // 
+            this.AddLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerButton.Image")));
+            this.AddLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddLayerButton.Name = "AddLayerButton";
+            this.AddLayerButton.Size = new System.Drawing.Size(22, 20);
+            this.AddLayerButton.Text = "Добавить слой";
+            this.AddLayerButton.Click += new System.EventHandler(this.AddLayerTool_Click);
+            // 
+            // RemoveLayerButton
+            // 
+            this.RemoveLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerButton.Image")));
+            this.RemoveLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveLayerButton.Name = "RemoveLayerButton";
+            this.RemoveLayerButton.Size = new System.Drawing.Size(22, 20);
+            this.RemoveLayerButton.Text = "Удалить слой";
+            this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerTool_Click);
             // 
             // menuStrip1
             // 
@@ -346,6 +371,8 @@
         private Tao.Platform.Windows.SimpleOpenGlControl AnT;
         private System.Windows.Forms.CheckedListBox LayersListBox;
         private System.Windows.Forms.Timer RenderTimer;
+        private System.Windows.Forms.ToolStripButton AddLayerButton;
+        private System.Windows.Forms.ToolStripButton RemoveLayerButton;
     }
 }
 
