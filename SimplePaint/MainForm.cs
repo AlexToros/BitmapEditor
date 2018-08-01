@@ -23,7 +23,8 @@ namespace SimplePaint
         {
             InitializeOpenGL();
             UpdateLayersList();
-            
+            colorPanel1.DataBindings.Add("BackColor", Engine, "ActiveColor");
+            colorPanel2.DataBindings.Add("BackColor", Engine, "LastColor");
         }
         private void InitializeOpenGL()
         {

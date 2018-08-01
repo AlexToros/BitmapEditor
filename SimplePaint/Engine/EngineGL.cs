@@ -81,6 +81,7 @@ namespace SimplePaint
             ActiveLayer = new Layer("Главный слой", picture_width, picture_height);
             Layers.Add(ActiveLayer);
             CurrentBrush = new Brush();
+            ActiveColor = Color.Black;
         }
 
         #region Mетоды инициализации движка
