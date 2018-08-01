@@ -33,10 +33,14 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
+            this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
+            this.colorPanel1 = new System.Windows.Forms.Panel();
+            this.colorPanel2 = new System.Windows.Forms.Panel();
             this.LayersListBox = new System.Windows.Forms.CheckedListBox();
             this.ModeToolStrip = new System.Windows.Forms.ToolStrip();
             this.ErraseButton = new System.Windows.Forms.ToolStripButton();
             this.BrushButton = new System.Windows.Forms.ToolStripButton();
+            this.FileBrushButton = new System.Windows.Forms.ToolStripButton();
             this.MainTools = new System.Windows.Forms.ToolStrip();
             this.AddLayerButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveLayerButton = new System.Windows.Forms.ToolStripButton();
@@ -53,10 +57,6 @@
             this.RemoveLayerTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RenderTimer = new System.Windows.Forms.Timer(this.components);
             this.changeColor = new System.Windows.Forms.ColorDialog();
-            this.FileBrushButton = new System.Windows.Forms.ToolStripButton();
-            this.colorPanel2 = new System.Windows.Forms.Panel();
-            this.colorPanel1 = new System.Windows.Forms.Panel();
-            this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -76,7 +76,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 383);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -110,7 +110,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 383);
             this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -127,11 +127,39 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(562, 402);
+            this.AnT.Size = new System.Drawing.Size(562, 377);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
             this.AnT.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AnT_MouseMove);
+            // 
+            // ChangeColorLink
+            // 
+            this.ChangeColorLink.AutoSize = true;
+            this.ChangeColorLink.Location = new System.Drawing.Point(72, 343);
+            this.ChangeColorLink.Name = "ChangeColorLink";
+            this.ChangeColorLink.Size = new System.Drawing.Size(58, 13);
+            this.ChangeColorLink.TabIndex = 3;
+            this.ChangeColorLink.TabStop = true;
+            this.ChangeColorLink.Text = "Поменять";
+            this.ChangeColorLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ChangeColorLink_LinkClicked);
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel1.Location = new System.Drawing.Point(14, 343);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel1.TabIndex = 2;
+            this.colorPanel1.DoubleClick += new System.EventHandler(this.colorPanel1_DoubleClick);
+            // 
+            // colorPanel2
+            // 
+            this.colorPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel2.Location = new System.Drawing.Point(26, 356);
+            this.colorPanel2.Name = "colorPanel2";
+            this.colorPanel2.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel2.TabIndex = 1;
             // 
             // LayersListBox
             // 
@@ -178,6 +206,17 @@
             this.BrushButton.Text = "Кисть";
             this.BrushButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BrushButton.Click += new System.EventHandler(this.BrushButton_Click);
+            // 
+            // FileBrushButton
+            // 
+            this.FileBrushButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FileBrushButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FileBrushButton.Image = global::SimplePaint.Properties.Resources.file_brush_pic;
+            this.FileBrushButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FileBrushButton.Name = "FileBrushButton";
+            this.FileBrushButton.Size = new System.Drawing.Size(22, 20);
+            this.FileBrushButton.Text = "Кисть из файла";
+            this.FileBrushButton.Click += new System.EventHandler(this.FileBrushButton_Click);
             // 
             // MainTools
             // 
@@ -256,20 +295,20 @@
             // PencilTool
             // 
             this.PencilTool.Name = "PencilTool";
-            this.PencilTool.Size = new System.Drawing.Size(152, 22);
+            this.PencilTool.Size = new System.Drawing.Size(130, 22);
             this.PencilTool.Text = "Карандаш";
             // 
             // BrushTool
             // 
             this.BrushTool.Name = "BrushTool";
-            this.BrushTool.Size = new System.Drawing.Size(152, 22);
+            this.BrushTool.Size = new System.Drawing.Size(130, 22);
             this.BrushTool.Text = "Кисть";
             this.BrushTool.Click += new System.EventHandler(this.BrushTool_Click);
             // 
             // EraserTool
             // 
             this.EraserTool.Name = "EraserTool";
-            this.EraserTool.Size = new System.Drawing.Size(152, 22);
+            this.EraserTool.Size = new System.Drawing.Size(130, 22);
             this.EraserTool.Text = "Ластик";
             this.EraserTool.Click += new System.EventHandler(this.EraserTool_Click);
             // 
@@ -300,44 +339,6 @@
             // 
             this.RenderTimer.Interval = 10;
             this.RenderTimer.Tick += new System.EventHandler(this.RenderTimer_Tick);
-            // 
-            // FileBrushButton
-            // 
-            this.FileBrushButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FileBrushButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FileBrushButton.Image = global::SimplePaint.Properties.Resources.file_brush_pic;
-            this.FileBrushButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FileBrushButton.Name = "FileBrushButton";
-            this.FileBrushButton.Size = new System.Drawing.Size(22, 20);
-            this.FileBrushButton.Text = "Кисть из файла";
-            this.FileBrushButton.Click += new System.EventHandler(this.FileBrushButton_Click);
-            // 
-            // colorPanel2
-            // 
-            this.colorPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel2.Location = new System.Drawing.Point(26, 356);
-            this.colorPanel2.Name = "colorPanel2";
-            this.colorPanel2.Size = new System.Drawing.Size(40, 40);
-            this.colorPanel2.TabIndex = 1;
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.Location = new System.Drawing.Point(14, 343);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Size = new System.Drawing.Size(40, 40);
-            this.colorPanel1.TabIndex = 2;
-            // 
-            // ChangeColorLink
-            // 
-            this.ChangeColorLink.AutoSize = true;
-            this.ChangeColorLink.Location = new System.Drawing.Point(72, 343);
-            this.ChangeColorLink.Name = "ChangeColorLink";
-            this.ChangeColorLink.Size = new System.Drawing.Size(58, 13);
-            this.ChangeColorLink.TabIndex = 3;
-            this.ChangeColorLink.TabStop = true;
-            this.ChangeColorLink.Text = "Поменять";
-            this.ChangeColorLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ChangeColorLink_LinkClicked);
             // 
             // MainForm
             // 

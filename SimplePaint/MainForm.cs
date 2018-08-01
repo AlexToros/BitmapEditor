@@ -117,7 +117,13 @@ namespace SimplePaint
 
         private void ChangeColorLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Engine.SwapColors();
+        }
 
+        private void colorPanel1_DoubleClick(object sender, EventArgs e)
+        {
+            if (changeColor.ShowDialog() == DialogResult.OK)
+                Engine.ActiveColor = changeColor.Color;
         }
     }
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using Tao.FreeGlut;
 using Tao.OpenGl;
 using Tao.Platform.Windows;
+using System.Runtime.CompilerServices;
 
 namespace SimplePaint
 {
-    class EngineGL 
+    class EngineGL : INotifyPropertyChanged
     {
         /// <summary>
         /// Холст
@@ -46,7 +47,15 @@ namespace SimplePaint
 
         public Brush CurrentBrush { get; set; }
 
-        public Color LastColor { get; set; }
+        public Color LastColor
+        {
+            get => _lastColor;
+            set
+            {
+                _lastColor = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public Color ActiveColor
         {
@@ -55,10 +64,19 @@ namespace SimplePaint
             {
                 LastColor = s_activeColor;
                 s_activeColor = value;
+                NotifyPropertyChanged();
             }
         }
 
         private Layer HiddenLayer;
+        private Color _lastColor;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private EngineGL()
         { }
 
@@ -95,10 +113,10 @@ namespace SimplePaint
         /// <returns>Экземпляр движка</returns>
         public static EngineGL InitializeEngine(SimpleOpenGlControl mainGraphicPanel, int picture_width, int picture_height)
         {
-            mainGraphicPanel.InitializeContexts();        
+            mainGraphicPanel.InitializeContexts();
             //Инициализация библиотеки
             Glut.glutInit();
-            
+
             return new EngineGL(mainGraphicPanel, picture_width, picture_height);
         }
 
@@ -135,10 +153,11 @@ namespace SimplePaint
             //переход к объектно-видовой матрице
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
+
         #endregion
 
         #region Методы над слоями
-       
+
         public void AddLayer(string name, bool visibility)
         {
             AddLayer(new Layer(name, picture_width, picture_height, visibility));
@@ -183,7 +202,7 @@ namespace SimplePaint
         /// Визуализация слоев
         /// </summary>
         private void DrawLayers()
-        {            
+        {
             Layers.ForEach(l => l.Render());
             HiddenLayer.Render();
         }
@@ -203,10 +222,15 @@ namespace SimplePaint
         }
 
         public void SetColor(Color color)
-        {            
+        {
             ActiveColor = color;
         }
-        
+
+        internal void SwapColors()
+        {
+            if (LastColor.A == 0) return;
+            ActiveColor = LastColor;
+        }
         #endregion
     }
 }
