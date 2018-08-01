@@ -33,6 +33,8 @@ namespace SimplePaint
         /// </summary>
         private int scroll_x, scroll_y;
 
+        private Color s_activeColor;
+
         public List<Layer> Layers { get; private set; }
 
         /// <summary>
@@ -44,6 +46,17 @@ namespace SimplePaint
 
         public Brush CurrentBrush { get; set; }
 
+        public Color LastColor { get; set; }
+
+        public Color ActiveColor
+        {
+            get => s_activeColor;
+            set
+            {
+                LastColor = s_activeColor;
+                s_activeColor = value;
+            }
+        }
 
         private Layer HiddenLayer;
         private EngineGL()
@@ -181,16 +194,16 @@ namespace SimplePaint
         /// <param name="y">Координата Y</param>
         internal void Draw(int x, int y)
         {
-            ActiveLayer.Draw(CurrentBrush, x, y);
+            ActiveLayer.Draw(ActiveColor, CurrentBrush, x, y);
         }
         internal void SystemDraw(int x, int y)
         {
-            HiddenLayer.Draw(CurrentBrush, x, y);
+            HiddenLayer.Draw(ActiveColor, CurrentBrush, x, y);
         }
 
         public void SetColor(Color color)
-        {
-            Layer.ActiveColor = color;
+        {            
+            ActiveColor = color;
         }
         
         #endregion

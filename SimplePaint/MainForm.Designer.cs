@@ -35,14 +35,9 @@
             this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.LayersListBox = new System.Windows.Forms.CheckedListBox();
             this.ModeToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.ErraseButton = new System.Windows.Forms.ToolStripButton();
             this.BrushButton = new System.Windows.Forms.ToolStripButton();
             this.MainTools = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.AddLayerButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveLayerButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -57,8 +52,11 @@
             this.AddLayerTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveLayerTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RenderTimer = new System.Windows.Forms.Timer(this.components);
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.changeColor = new System.Windows.Forms.ColorDialog();
             this.FileBrushButton = new System.Windows.Forms.ToolStripButton();
+            this.colorPanel2 = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new System.Windows.Forms.Panel();
+            this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -78,7 +76,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(705, 408);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -107,10 +105,13 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ChangeColorLink);
+            this.splitContainer1.Panel2.Controls.Add(this.colorPanel1);
+            this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(705, 408);
-            this.splitContainer1.SplitterDistance = 558;
+            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
+            this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
             // AnT
@@ -126,7 +127,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(555, 402);
+            this.AnT.Size = new System.Drawing.Size(562, 402);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
@@ -138,7 +139,7 @@
             this.LayersListBox.FormattingEnabled = true;
             this.LayersListBox.Location = new System.Drawing.Point(0, 3);
             this.LayersListBox.Name = "LayersListBox";
-            this.LayersListBox.Size = new System.Drawing.Size(140, 229);
+            this.LayersListBox.Size = new System.Drawing.Size(141, 274);
             this.LayersListBox.TabIndex = 0;
             this.LayersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LayersListBox_ItemCheck);
             this.LayersListBox.SelectedIndexChanged += new System.EventHandler(this.LayersListBox_SelectedIndexChanged);
@@ -147,62 +148,33 @@
             // 
             this.ModeToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ModeToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
             this.ErraseButton,
             this.BrushButton,
             this.FileBrushButton});
             this.ModeToolStrip.Location = new System.Drawing.Point(0, 3);
             this.ModeToolStrip.Name = "ModeToolStrip";
-            this.ModeToolStrip.Size = new System.Drawing.Size(32, 150);
+            this.ModeToolStrip.Size = new System.Drawing.Size(24, 80);
             this.ModeToolStrip.TabIndex = 0;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 4);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 4);
-            this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 4);
-            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // ErraseButton
             // 
-            this.ErraseButton.AutoSize = false;
             this.ErraseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ErraseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.ErraseButton.Image = global::SimplePaint.Properties.Resources.errase_pic;
             this.ErraseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ErraseButton.Name = "ErraseButton";
-            this.ErraseButton.Size = new System.Drawing.Size(30, 30);
+            this.ErraseButton.Size = new System.Drawing.Size(22, 20);
             this.ErraseButton.Text = "Ластик";
             this.ErraseButton.Click += new System.EventHandler(this.ErraseButton_Click);
             // 
             // BrushButton
             // 
-            this.BrushButton.AutoSize = false;
             this.BrushButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BrushButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.BrushButton.Image = global::SimplePaint.Properties.Resources.std_brush_pic;
             this.BrushButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BrushButton.Name = "BrushButton";
-            this.BrushButton.Size = new System.Drawing.Size(30, 30);
+            this.BrushButton.Size = new System.Drawing.Size(22, 20);
             this.BrushButton.Text = "Кисть";
             this.BrushButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BrushButton.Click += new System.EventHandler(this.BrushButton_Click);
@@ -211,30 +183,12 @@
             // 
             this.MainTools.Dock = System.Windows.Forms.DockStyle.None;
             this.MainTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
-            this.toolStripButton5,
             this.AddLayerButton,
             this.RemoveLayerButton});
             this.MainTools.Location = new System.Drawing.Point(0, 3);
             this.MainTools.Name = "MainTools";
-            this.MainTools.Size = new System.Drawing.Size(24, 71);
+            this.MainTools.Size = new System.Drawing.Size(24, 57);
             this.MainTools.TabIndex = 0;
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(22, 4);
-            this.toolStripButton4.Text = "toolStripButton4";
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(22, 4);
-            this.toolStripButton5.Text = "toolStripButton5";
             // 
             // AddLayerButton
             // 
@@ -349,15 +303,41 @@
             // 
             // FileBrushButton
             // 
-            this.FileBrushButton.AutoSize = false;
             this.FileBrushButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FileBrushButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.FileBrushButton.Image = global::SimplePaint.Properties.Resources.file_brush_pic;
             this.FileBrushButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FileBrushButton.Name = "FileBrushButton";
-            this.FileBrushButton.Size = new System.Drawing.Size(30, 30);
+            this.FileBrushButton.Size = new System.Drawing.Size(22, 20);
             this.FileBrushButton.Text = "Кисть из файла";
             this.FileBrushButton.Click += new System.EventHandler(this.FileBrushButton_Click);
+            // 
+            // colorPanel2
+            // 
+            this.colorPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel2.Location = new System.Drawing.Point(26, 356);
+            this.colorPanel2.Name = "colorPanel2";
+            this.colorPanel2.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel2.TabIndex = 1;
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel1.Location = new System.Drawing.Point(14, 343);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel1.TabIndex = 2;
+            // 
+            // ChangeColorLink
+            // 
+            this.ChangeColorLink.AutoSize = true;
+            this.ChangeColorLink.Location = new System.Drawing.Point(72, 343);
+            this.ChangeColorLink.Name = "ChangeColorLink";
+            this.ChangeColorLink.Size = new System.Drawing.Size(58, 13);
+            this.ChangeColorLink.TabIndex = 3;
+            this.ChangeColorLink.TabStop = true;
+            this.ChangeColorLink.Text = "Поменять";
+            this.ChangeColorLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ChangeColorLink_LinkClicked);
             // 
             // MainForm
             // 
@@ -367,6 +347,8 @@
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(777, 470);
+            this.MinimumSize = new System.Drawing.Size(777, 470);
             this.Name = "MainForm";
             this.Text = "Простой растровый редактор";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -379,6 +361,7 @@
             this.toolStripContainer1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ModeToolStrip.ResumeLayout(false);
@@ -396,12 +379,7 @@
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip ModeToolStrip;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStrip MainTools;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileMenu;
         private System.Windows.Forms.ToolStripMenuItem NewBitmapTool;
@@ -421,8 +399,11 @@
         private System.Windows.Forms.ToolStripButton RemoveLayerButton;
         private System.Windows.Forms.ToolStripButton ErraseButton;
         private System.Windows.Forms.ToolStripButton BrushButton;
-        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ColorDialog changeColor;
         private System.Windows.Forms.ToolStripButton FileBrushButton;
+        private System.Windows.Forms.LinkLabel ChangeColorLink;
+        private System.Windows.Forms.Panel colorPanel1;
+        private System.Windows.Forms.Panel colorPanel2;
     }
 }
 

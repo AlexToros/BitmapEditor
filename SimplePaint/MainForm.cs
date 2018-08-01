@@ -23,6 +23,7 @@ namespace SimplePaint
         {
             InitializeOpenGL();
             UpdateLayersList();
+            
         }
         private void InitializeOpenGL()
         {
@@ -111,6 +112,11 @@ namespace SimplePaint
         private void ErraseButton_Click(object sender, EventArgs e)
         {
             EraserTool_Click(sender, e);
+        }
+
+        private void ChangeColorLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

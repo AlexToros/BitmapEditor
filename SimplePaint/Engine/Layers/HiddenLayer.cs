@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace SimplePaint
     {
         public HiddenLayer(int width, int heigth) : base("", width, heigth) { }
 
-        public override void Draw(Brush br, int x, int y)
+        public override void Draw(Color color,Brush br, int x, int y)
         {
             DrawArrayInit();
             if (IsVisible)
@@ -42,9 +43,9 @@ namespace SimplePaint
                         }
                         else if (br[br_x, br_y])
                         {
-                            DrawPlace[i, j, 0] = ActiveColor.R;
-                            DrawPlace[i, j, 1] = ActiveColor.G;
-                            DrawPlace[i, j, 2] = ActiveColor.B;
+                            DrawPlace[i, j, 0] = color.R;
+                            DrawPlace[i, j, 1] = color.G;
+                            DrawPlace[i, j, 2] = color.B;
                             DrawPlace[i, j, 3] = 0;
                         }
                     }
