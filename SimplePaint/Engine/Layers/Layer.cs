@@ -14,7 +14,7 @@ namespace SimplePaint
         /// <summary>
         /// модель холста. Координаты пикселя и его цвет
         /// </summary>
-        public int[,,] DrawPlace { get; private set; }
+        public short[,,] DrawPlace { get; private set; }
         public int Width { get; private set; }
         public int Heigth { get; private set; }
         public bool IsVisible { get; set; }
@@ -25,7 +25,7 @@ namespace SimplePaint
             Name = name;
             Width = width;
             Heigth = heigth;
-            DrawPlace = new int[Width, Heigth, 4];
+            DrawPlace = new short[Width, Heigth, 4];
             DrawArrayInit();
             IsVisible = true;
         }
@@ -64,7 +64,7 @@ namespace SimplePaint
                             DrawPlace[i, j, 0] = color.R;
                             DrawPlace[i, j, 1] = color.G;
                             DrawPlace[i, j, 2] = color.B;
-                            DrawPlace[i, j, 3] = br.IsErase ? 1 : 0;
+                            DrawPlace[i, j, 3] = br.IsErase ? (short)1 : (short)0;
                         }
 
                     }
@@ -85,7 +85,7 @@ namespace SimplePaint
                     {
                         if (DrawPlace[i, j, 3] != 1)
                         {
-                            Gl.glColor3f(DrawPlace[i, j, 0], DrawPlace[i, j, 1], DrawPlace[i, j, 2]);
+                            Gl.glColor3f((float)DrawPlace[i, j, 0]/255.0f, (float)DrawPlace[i, j, 1]/255.0f, (float)DrawPlace[i, j, 2]/255.0f);
                             Gl.glVertex2i(i, j);
                         }
                     }
