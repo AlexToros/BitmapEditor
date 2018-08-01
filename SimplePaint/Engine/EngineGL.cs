@@ -231,6 +231,11 @@ namespace SimplePaint
             if (LastColor.A == 0) return;
             ActiveColor = LastColor;
         }
+
+        internal void ChangeSize(int newSize)
+        {
+            CurrentBrush.ChangeSize(newSize);
+        }
         #endregion
     }
 }

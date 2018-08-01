@@ -57,6 +57,7 @@
             this.RemoveLayerTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RenderTimer = new System.Windows.Forms.Timer(this.components);
             this.changeColor = new System.Windows.Forms.ColorDialog();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -68,6 +69,7 @@
             this.ModeToolStrip.SuspendLayout();
             this.MainTools.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -105,6 +107,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.trackBar1);
             this.splitContainer1.Panel2.Controls.Add(this.ChangeColorLink);
             this.splitContainer1.Panel2.Controls.Add(this.colorPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
@@ -341,6 +344,18 @@
             this.RenderTimer.Interval = 10;
             this.RenderTimer.Tick += new System.EventHandler(this.RenderTimer_Tick);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(14, 292);
+            this.trackBar1.Maximum = 79;
+            this.trackBar1.Minimum = 5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(116, 45);
+            this.trackBar1.TabIndex = 4;
+            this.trackBar1.TickFrequency = 3;
+            this.trackBar1.Value = 5;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +387,7 @@
             this.MainTools.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +422,7 @@
         private System.Windows.Forms.LinkLabel ChangeColorLink;
         private System.Windows.Forms.Panel colorPanel1;
         private System.Windows.Forms.Panel colorPanel2;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

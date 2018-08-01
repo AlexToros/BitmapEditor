@@ -14,7 +14,7 @@ namespace SimplePaint
         public override void InitializeBrush()
         {
             Func<double, double, bool> predicate = (x, y) => x * x + y * y <= Math.Pow(Width / 2.0f,2);
-
+            
             for (int i = 0; i < Width; i++)
                 for (int j = 0; j < Height; j++)
                     if (predicate((double)i - Width / 2.0f, (double)j - Height / 2.0f))

@@ -35,5 +35,11 @@ namespace SimplePaint
             for (int j = 0; j < BrushMap.GetLength(1); j++)
                 BrushMap[BrushMap.GetLength(0) / 2, j] = true;
         }
+
+        public void ChangeSize(int newSize)
+        {
+            BrushMap = new bool[newSize, newSize];
+            InitializeBrush();
+        }
     }
 }

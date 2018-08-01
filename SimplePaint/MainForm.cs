@@ -130,5 +130,10 @@ namespace SimplePaint
         {
             Engine.CurrentBrush = new CircleBrush(30);
         }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            Engine.ChangeSize(trackBar1.Value);
+        }
     }
 }
