@@ -76,7 +76,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 383);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -110,7 +110,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 383);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
             this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -127,7 +127,7 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(562, 377);
+            this.AnT.Size = new System.Drawing.Size(562, 402);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
@@ -295,8 +295,9 @@
             // PencilTool
             // 
             this.PencilTool.Name = "PencilTool";
-            this.PencilTool.Size = new System.Drawing.Size(130, 22);
+            this.PencilTool.Size = new System.Drawing.Size(152, 22);
             this.PencilTool.Text = "Карандаш";
+            this.PencilTool.Click += new System.EventHandler(this.PencilTool_Click);
             // 
             // BrushTool
             // 

@@ -125,5 +125,10 @@ namespace SimplePaint
             if (changeColor.ShowDialog() == DialogResult.OK)
                 Engine.SetColor(changeColor.Color);
         }
+
+        private void PencilTool_Click(object sender, EventArgs e)
+        {
+            Engine.CurrentBrush = new CircleBrush(30);
+        }
     }
 }

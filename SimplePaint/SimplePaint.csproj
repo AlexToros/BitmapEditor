@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Engine\Brushes\Brush.cs" />
     <Compile Include="Engine\Brushes\BrushFromFile.cs" />
+    <Compile Include="Engine\Brushes\CircleBrush.cs" />
     <Compile Include="Engine\Brushes\EraseBrush.cs" />
     <Compile Include="Engine\EngineGL.cs" />
     <Compile Include="Engine\Layers\HiddenLayer.cs" />
