@@ -33,6 +33,7 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
             this.colorPanel1 = new System.Windows.Forms.Panel();
             this.colorPanel2 = new System.Windows.Forms.Panel();
@@ -40,13 +41,14 @@
             this.ModeToolStrip = new System.Windows.Forms.ToolStrip();
             this.ErraseButton = new System.Windows.Forms.ToolStripButton();
             this.BrushButton = new System.Windows.Forms.ToolStripButton();
-            this.FileBrushButton = new System.Windows.Forms.ToolStripButton();
             this.MainTools = new System.Windows.Forms.ToolStrip();
             this.AddLayerButton = new System.Windows.Forms.ToolStripButton();
             this.RemoveLayerButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.NewBitmapTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewProjectTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.FromFileTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.SavePicture = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitTool = new System.Windows.Forms.ToolStripMenuItem();
             this.DrawingMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.PencilTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +59,8 @@
             this.RemoveLayerTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RenderTimer = new System.Windows.Forms.Timer(this.components);
             this.changeColor = new System.Windows.Forms.ColorDialog();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -66,10 +69,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.ModeToolStrip.SuspendLayout();
             this.MainTools.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -78,7 +81,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 408);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 383);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -113,7 +116,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 408);
+            this.splitContainer1.Size = new System.Drawing.Size(713, 383);
             this.splitContainer1.SplitterDistance = 565;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -130,11 +133,23 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(562, 402);
+            this.AnT.Size = new System.Drawing.Size(562, 377);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
             this.AnT.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AnT_MouseMove);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(14, 292);
+            this.trackBar1.Maximum = 79;
+            this.trackBar1.Minimum = 5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(116, 45);
+            this.trackBar1.TabIndex = 4;
+            this.trackBar1.TickFrequency = 3;
+            this.trackBar1.Value = 5;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // ChangeColorLink
             // 
@@ -180,11 +195,10 @@
             this.ModeToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ModeToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ErraseButton,
-            this.BrushButton,
-            this.FileBrushButton});
+            this.BrushButton});
             this.ModeToolStrip.Location = new System.Drawing.Point(0, 3);
             this.ModeToolStrip.Name = "ModeToolStrip";
-            this.ModeToolStrip.Size = new System.Drawing.Size(24, 80);
+            this.ModeToolStrip.Size = new System.Drawing.Size(24, 57);
             this.ModeToolStrip.TabIndex = 0;
             // 
             // ErraseButton
@@ -210,17 +224,6 @@
             this.BrushButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BrushButton.Click += new System.EventHandler(this.BrushButton_Click);
             // 
-            // FileBrushButton
-            // 
-            this.FileBrushButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FileBrushButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FileBrushButton.Image = global::SimplePaint.Properties.Resources.file_brush_pic;
-            this.FileBrushButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FileBrushButton.Name = "FileBrushButton";
-            this.FileBrushButton.Size = new System.Drawing.Size(22, 20);
-            this.FileBrushButton.Text = "Кисть из файла";
-            this.FileBrushButton.Click += new System.EventHandler(this.FileBrushButton_Click);
-            // 
             // MainTools
             // 
             this.MainTools.Dock = System.Windows.Forms.DockStyle.None;
@@ -229,27 +232,27 @@
             this.RemoveLayerButton});
             this.MainTools.Location = new System.Drawing.Point(0, 3);
             this.MainTools.Name = "MainTools";
-            this.MainTools.Size = new System.Drawing.Size(24, 57);
+            this.MainTools.Size = new System.Drawing.Size(24, 55);
             this.MainTools.TabIndex = 0;
             // 
             // AddLayerButton
             // 
-            this.AddLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.AddLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("AddLayerButton.Image")));
             this.AddLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddLayerButton.Name = "AddLayerButton";
-            this.AddLayerButton.Size = new System.Drawing.Size(22, 20);
-            this.AddLayerButton.Text = "Добавить слой";
+            this.AddLayerButton.Size = new System.Drawing.Size(22, 19);
+            this.AddLayerButton.Text = "+";
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerTool_Click);
             // 
             // RemoveLayerButton
             // 
-            this.RemoveLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveLayerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.RemoveLayerButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveLayerButton.Image")));
             this.RemoveLayerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveLayerButton.Name = "RemoveLayerButton";
-            this.RemoveLayerButton.Size = new System.Drawing.Size(22, 20);
-            this.RemoveLayerButton.Text = "Удалить слой";
+            this.RemoveLayerButton.Size = new System.Drawing.Size(22, 19);
+            this.RemoveLayerButton.Text = "-";
             this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerTool_Click);
             // 
             // menuStrip1
@@ -267,23 +270,39 @@
             // FileMenu
             // 
             this.FileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NewBitmapTool,
+            this.NewProjectTool,
+            this.FromFileTool,
+            this.SavePicture,
             this.ExitTool});
             this.FileMenu.Name = "FileMenu";
             this.FileMenu.Size = new System.Drawing.Size(48, 20);
             this.FileMenu.Text = "Файл";
             // 
-            // NewBitmapTool
+            // NewProjectTool
             // 
-            this.NewBitmapTool.Name = "NewBitmapTool";
-            this.NewBitmapTool.Size = new System.Drawing.Size(161, 22);
-            this.NewBitmapTool.Text = "Новый рисунок";
-            this.NewBitmapTool.Click += new System.EventHandler(this.NewBitmapTool_Click);
+            this.NewProjectTool.Name = "NewProjectTool";
+            this.NewProjectTool.Size = new System.Drawing.Size(157, 22);
+            this.NewProjectTool.Text = "Чистый проект";
+            this.NewProjectTool.Click += new System.EventHandler(this.NewProjectTool_Click);
+            // 
+            // FromFileTool
+            // 
+            this.FromFileTool.Name = "FromFileTool";
+            this.FromFileTool.Size = new System.Drawing.Size(157, 22);
+            this.FromFileTool.Text = "Из файла";
+            this.FromFileTool.Click += new System.EventHandler(this.FromFileTool_Click);
+            // 
+            // SavePicture
+            // 
+            this.SavePicture.Name = "SavePicture";
+            this.SavePicture.Size = new System.Drawing.Size(157, 22);
+            this.SavePicture.Text = "Сохранить";
+            this.SavePicture.Click += new System.EventHandler(this.SavePicture_Click);
             // 
             // ExitTool
             // 
             this.ExitTool.Name = "ExitTool";
-            this.ExitTool.Size = new System.Drawing.Size(161, 22);
+            this.ExitTool.Size = new System.Drawing.Size(157, 22);
             this.ExitTool.Text = "Выход";
             // 
             // DrawingMenu
@@ -299,7 +318,7 @@
             // PencilTool
             // 
             this.PencilTool.Name = "PencilTool";
-            this.PencilTool.Size = new System.Drawing.Size(152, 22);
+            this.PencilTool.Size = new System.Drawing.Size(130, 22);
             this.PencilTool.Text = "Карандаш";
             this.PencilTool.Click += new System.EventHandler(this.PencilTool_Click);
             // 
@@ -345,17 +364,9 @@
             this.RenderTimer.Interval = 10;
             this.RenderTimer.Tick += new System.EventHandler(this.RenderTimer_Tick);
             // 
-            // trackBar1
+            // openFileDialog1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(14, 292);
-            this.trackBar1.Maximum = 79;
-            this.trackBar1.Minimum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(116, 45);
-            this.trackBar1.TabIndex = 4;
-            this.trackBar1.TickFrequency = 3;
-            this.trackBar1.Value = 5;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -382,13 +393,13 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ModeToolStrip.ResumeLayout(false);
             this.ModeToolStrip.PerformLayout();
             this.MainTools.ResumeLayout(false);
             this.MainTools.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,7 +412,6 @@
         private System.Windows.Forms.ToolStrip MainTools;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem FileMenu;
-        private System.Windows.Forms.ToolStripMenuItem NewBitmapTool;
         private System.Windows.Forms.ToolStripMenuItem ExitTool;
         private System.Windows.Forms.ToolStripMenuItem DrawingMenu;
         private System.Windows.Forms.ToolStripMenuItem PencilTool;
@@ -419,11 +429,15 @@
         private System.Windows.Forms.ToolStripButton ErraseButton;
         private System.Windows.Forms.ToolStripButton BrushButton;
         private System.Windows.Forms.ColorDialog changeColor;
-        private System.Windows.Forms.ToolStripButton FileBrushButton;
         private System.Windows.Forms.LinkLabel ChangeColorLink;
         private System.Windows.Forms.Panel colorPanel1;
         private System.Windows.Forms.Panel colorPanel2;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ToolStripMenuItem NewProjectTool;
+        private System.Windows.Forms.ToolStripMenuItem FromFileTool;
+        private System.Windows.Forms.ToolStripMenuItem SavePicture;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

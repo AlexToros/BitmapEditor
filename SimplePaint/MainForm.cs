@@ -92,19 +92,14 @@ namespace SimplePaint
 
         private void EraserTool_Click(object sender, EventArgs e)
         {
-            Engine.CurrentBrush = new EraseBrush(30);
+            Engine.CurrentBrush = new EraseBrush(trackBar1.Value);
         }
 
         private void BrushTool_Click(object sender, EventArgs e)
         {
-            Engine.CurrentBrush = new Brush();
+            Engine.CurrentBrush = new Brush(trackBar1.Value);
         }
-
-        private void FileBrushButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void BrushButton_Click(object sender, EventArgs e)
         {
             BrushTool_Click(sender, e);
@@ -128,7 +123,7 @@ namespace SimplePaint
 
         private void PencilTool_Click(object sender, EventArgs e)
         {
-            Engine.CurrentBrush = new CircleBrush(30);
+            Engine.CurrentBrush = new CircleBrush(trackBar1.Value);
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
@@ -136,9 +131,22 @@ namespace SimplePaint
             Engine.ChangeSize(trackBar1.Value);
         }
 
-        private void NewBitmapTool_Click(object sender, EventArgs e)
+        private void NewProjectTool_Click(object sender, EventArgs e)
         {
-            Engine.SetImageToMainLayer((Bitmap)Bitmap.FromFile(@"C:\Users\Алекс\Pictures\1.jpg"));
+            Engine = new EngineGL(AnT, AnT.Width, AnT.Height);
+        }
+
+        private void FromFileTool_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Изображения|*.jpg;*.bmp;*.jpeg;*.png";
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+                Engine.SetImageToMainLayer((Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+        }
+
+        private void SavePicture_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                Engine.GetResultBitMap().Save(saveFileDialog1.FileName);
         }
     }
 }

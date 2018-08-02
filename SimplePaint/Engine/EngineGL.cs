@@ -80,7 +80,7 @@ namespace SimplePaint
         }
         private EngineGL()
         { }
-
+        
         public EngineGL(SimpleOpenGlControl mainGraphicPanel, int picture_width, int picture_height)
         {
             HiddenLayer = new HiddenLayer(picture_width, picture_height);
@@ -205,7 +205,7 @@ namespace SimplePaint
         public void SetImageToMainLayer(Bitmap bitmap)
         {
             bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-            var data = bitmap.LockBits(new Rectangle(0, 0, picture_width, picture_height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+            var data = bitmap.LockBits(new Rectangle(0, 0, picture_width > bitmap.Width ? bitmap.Width:picture_width, picture_height > bitmap.Height ? bitmap.Height : picture_height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
 
             byte[] pixels = new byte[data.Stride];
             for (int i = 0; i < picture_height && i<bitmap.Height; i++)
@@ -214,9 +214,9 @@ namespace SimplePaint
                 for (int j = 0; j < picture_width && j < bitmap.Width; j++)
                 {
                     int indx = j * 4;
-                    ActiveLayer.DrawPlace[j, i, 0] = pixels[indx];
+                    ActiveLayer.DrawPlace[j, i, 2] = pixels[indx];
                     ActiveLayer.DrawPlace[j, i, 1] = pixels[++indx];
-                    ActiveLayer.DrawPlace[j, i, 2] = pixels[++indx];
+                    ActiveLayer.DrawPlace[j, i, 0] = pixels[++indx];
                     ActiveLayer.DrawPlace[j, i, 3] = 0;
                 }
             }
