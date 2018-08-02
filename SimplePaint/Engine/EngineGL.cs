@@ -42,7 +42,15 @@ namespace SimplePaint
         /// <summary>
         /// Активный слой
         /// </summary>
-        public Layer ActiveLayer { get; set; }
+        public Layer ActiveLayer
+        {
+            get => _activeLayer;
+            set
+            {
+                _activeLayer?.CreateNewList();                
+                _activeLayer = value;
+            }
+        }
 
         public int LayersCount { get => Layers.Count; }
 
@@ -71,6 +79,7 @@ namespace SimplePaint
 
         private Layer HiddenLayer;
         private Color _lastColor;
+        private Layer _activeLayer;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -80,7 +89,7 @@ namespace SimplePaint
         }
         private EngineGL()
         { }
-        
+
         public EngineGL(SimpleOpenGlControl mainGraphicPanel, int picture_width, int picture_height)
         {
             HiddenLayer = new HiddenLayer(picture_width, picture_height);
@@ -97,7 +106,7 @@ namespace SimplePaint
             scroll_x = 0;
             scroll_y = 0;
 
-            ActiveLayer = new Layer("Главный слой", picture_width, picture_height);
+            ActiveLayer = new Layer(1,"Главный слой", picture_width, picture_height);
             Layers.Add(ActiveLayer);
             CurrentBrush = new Brush();
             ActiveColor = Color.Black;
@@ -116,6 +125,7 @@ namespace SimplePaint
         {
             mainGraphicPanel.InitializeContexts();
             //Инициализация библиотеки
+
             Glut.glutInit();
 
             return new EngineGL(mainGraphicPanel, picture_width, picture_height);
@@ -138,6 +148,7 @@ namespace SimplePaint
         /// <param name="ScreenWidth">Высота холста</param>
         public void Canvas_Init(int ScreenHeight, int ScreenWidth)
         {
+
             //режим окна
             Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
             //цвет очистки окна
@@ -154,6 +165,7 @@ namespace SimplePaint
             //переход к объектно-видовой матрице
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
+        
 
         #endregion
 
@@ -161,7 +173,7 @@ namespace SimplePaint
 
         public void AddLayer(string name, bool visibility)
         {
-            AddLayer(new Layer(name, picture_width, picture_height, visibility));
+            AddLayer(new Layer(LayersCount+1, name, picture_width, picture_height, visibility));
             ActiveLayer = Layers.Last();
         }
 
@@ -184,7 +196,7 @@ namespace SimplePaint
             for (int i = 0; i < picture_width; i++)
                 for (int j = 0; j < picture_height; j++)
                 {
-                    for (int l = LayersCount-1; l >= 0; l--)
+                    for (int l = LayersCount - 1; l >= 0; l--)
                     {
                         short[,,] temp = Layers[l].DrawPlace;
                         if (temp[i, j, 3] == 0)
@@ -205,10 +217,10 @@ namespace SimplePaint
         public void SetImageToMainLayer(Bitmap bitmap)
         {
             bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-            var data = bitmap.LockBits(new Rectangle(0, 0, picture_width > bitmap.Width ? bitmap.Width:picture_width, picture_height > bitmap.Height ? bitmap.Height : picture_height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+            var data = bitmap.LockBits(new Rectangle(0, 0, picture_width > bitmap.Width ? bitmap.Width : picture_width, picture_height > bitmap.Height ? bitmap.Height : picture_height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
 
             byte[] pixels = new byte[data.Stride];
-            for (int i = 0; i < picture_height && i<bitmap.Height; i++)
+            for (int i = 0; i < picture_height && i < bitmap.Height; i++)
             {
                 Marshal.Copy(data.Scan0 + i * data.Stride, pixels, 0, data.Stride);
                 for (int j = 0; j < picture_width && j < bitmap.Width; j++)
@@ -249,8 +261,8 @@ namespace SimplePaint
         /// </summary>
         private void DrawLayers()
         {
-            Layers.ForEach(l => l.Render());
-            HiddenLayer.Render();
+            Layers.ForEach(l => l.Render(l != ActiveLayer));
+            HiddenLayer.Render(false);
         }
 
         /// <summary>

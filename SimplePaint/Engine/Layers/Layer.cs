@@ -19,9 +19,11 @@ namespace SimplePaint
         public int Heigth { get; private set; }
         public bool IsVisible { get; set; }
         public string Name { get; set; }
-        
-        public Layer(string name, int width, int heigth)
+        public int DisplayListNumber { get; set; }
+
+        public Layer(int list, string name, int width, int heigth)
         {
+            DisplayListNumber = list;
             Name = name;
             Width = width;
             Heigth = heigth;
@@ -29,8 +31,8 @@ namespace SimplePaint
             DrawArrayInit();
             IsVisible = true;
         }
-        public Layer(string name, int width, int heigth, bool visibility) :
-            this(name, width, heigth)
+        public Layer(int list, string name, int width, int heigth, bool visibility) :
+            this(list, name, width, heigth)
         {
             IsVisible = visibility;
         }
@@ -74,27 +76,74 @@ namespace SimplePaint
         /// <summary>
         /// Отрисовка всего слоя
         /// </summary>
-        public void Render()
+        public void Render(bool UseDisplayList)
         {
             if (IsVisible)
             {
-                Gl.glBegin(Gl.GL_POINTS);
-
-                for (int i = 0; i < Width; i++)
-                    for (int j = 0; j < Heigth; j++)
-                    {
-                        if (DrawPlace[i, j, 3] != 1)
+                if (UseDisplayList)
+                {
+                    Gl.glCallList(DisplayListNumber);
+                }
+                else
+                {
+                    int count = 0;
+                    List<int> arr_data_vertex = new List<int>(); 
+                    List<float> arr_data_colors = new List<float>();
+                    
+                    for (int i = 0; i < Width; i++)
+                        for (int j = 0; j < Heigth; j++)
                         {
-                            Gl.glColor3f((float)DrawPlace[i, j, 0]/255.0f, (float)DrawPlace[i, j, 1]/255.0f, (float)DrawPlace[i, j, 2]/255.0f);
-                            Gl.glVertex2i(i, j);
+                            if (DrawPlace[i, j, 3] == 0)
+                            {
+                                count++;
+                                arr_data_vertex.Add(i);
+                                arr_data_vertex.Add(j);
+
+                                for (int c = 0; c < 3; c++)
+                                    arr_data_colors.Add((float)DrawPlace[i, j, c] / 255.0f);
+                            }
                         }
-                    }
-                Gl.glEnd();
+
+                    Gl.glEnableClientState(Gl.GL_VERTEX_ARRAY);
+                    Gl.glEnableClientState(Gl.GL_COLOR_ARRAY);
+
+                    Gl.glColorPointer(3, Gl.GL_FLOAT, 0, arr_data_colors.ToArray());
+                    Gl.glVertexPointer(2, Gl.GL_INT, 0, arr_data_vertex.ToArray());
+
+                    Gl.glDrawArrays(Gl.GL_POINTS, 0, count);
+
+                    Gl.glDisableClientState(Gl.GL_VERTEX_ARRAY);
+                    Gl.glDisableClientState(Gl.GL_COLOR_ARRAY);
+                }
             }
         }
+
+        public void CreateNewList()
+        {
+            if (Gl.glIsList(DisplayListNumber) == Gl.GL_TRUE)
+            {
+                Gl.glDeleteLists(DisplayListNumber, 1);
+                Gl.glGenLists(1);
+            }
+
+            Gl.glNewList(DisplayListNumber, Gl.GL_COMPILE);
+
+            Render(false);
+
+            Gl.glEndList();
+        }
+
+        public void ClearList()
+        {
+            if (Gl.glIsList(DisplayListNumber) == Gl.GL_TRUE)
+                Gl.glDeleteLists(DisplayListNumber, 1);
+        }
+
+
         public override string ToString()
         {
             return Name;
         }
+        
     }
 }

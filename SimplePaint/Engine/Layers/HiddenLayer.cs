@@ -9,7 +9,7 @@ namespace SimplePaint
 {
     class HiddenLayer : Layer
     {
-        public HiddenLayer(int width, int heigth) : base("", width, heigth) { }
+        public HiddenLayer(int width, int heigth) : base(0,"", width, heigth) { }
 
         public override void Draw(Color color,Brush br, int x, int y)
         {

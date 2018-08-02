@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.colorPanel1 = new System.Windows.Forms.Panel();
-            this.colorPanel2 = new System.Windows.Forms.Panel();
             this.LayersListBox = new System.Windows.Forms.CheckedListBox();
+            this.colorPanel2 = new System.Windows.Forms.Panel();
+            this.ChangeColorLink = new System.Windows.Forms.LinkLabel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.AnT = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.ModeToolStrip = new System.Windows.Forms.ToolStrip();
             this.ErraseButton = new System.Windows.Forms.ToolStripButton();
             this.BrushButton = new System.Windows.Forms.ToolStripButton();
@@ -65,10 +66,8 @@
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.ModeToolStrip.SuspendLayout();
             this.MainTools.SuspendLayout();
@@ -80,8 +79,8 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(713, 383);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(817, 478);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -93,32 +92,89 @@
             // toolStripContainer1.RightToolStripPanel
             // 
             this.toolStripContainer1.RightToolStripPanel.Controls.Add(this.MainTools);
-            this.toolStripContainer1.Size = new System.Drawing.Size(761, 408);
+            this.toolStripContainer1.Size = new System.Drawing.Size(865, 478);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
-            // splitContainer1
+            // tableLayoutPanel1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.AnT, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(817, 478);
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // splitContainer1.Panel1
+            // panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.AnT);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.panel1.Controls.Add(this.colorPanel1);
+            this.panel1.Controls.Add(this.LayersListBox);
+            this.panel1.Controls.Add(this.colorPanel2);
+            this.panel1.Controls.Add(this.ChangeColorLink);
+            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(662, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(152, 472);
+            this.panel1.TabIndex = 6;
             // 
-            // splitContainer1.Panel2
+            // colorPanel1
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.trackBar1);
-            this.splitContainer1.Panel2.Controls.Add(this.ChangeColorLink);
-            this.splitContainer1.Panel2.Controls.Add(this.colorPanel1);
-            this.splitContainer1.Panel2.Controls.Add(this.colorPanel2);
-            this.splitContainer1.Panel2.Controls.Add(this.LayersListBox);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.splitContainer1.Size = new System.Drawing.Size(713, 383);
-            this.splitContainer1.SplitterDistance = 565;
-            this.splitContainer1.TabIndex = 0;
+            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel1.Location = new System.Drawing.Point(12, 410);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel1.TabIndex = 2;
+            this.colorPanel1.DoubleClick += new System.EventHandler(this.colorPanel1_DoubleClick);
+            // 
+            // LayersListBox
+            // 
+            this.LayersListBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LayersListBox.FormattingEnabled = true;
+            this.LayersListBox.Location = new System.Drawing.Point(0, 0);
+            this.LayersListBox.Name = "LayersListBox";
+            this.LayersListBox.Size = new System.Drawing.Size(152, 349);
+            this.LayersListBox.TabIndex = 0;
+            this.LayersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LayersListBox_ItemCheck);
+            this.LayersListBox.SelectedIndexChanged += new System.EventHandler(this.LayersListBox_SelectedIndexChanged);
+            // 
+            // colorPanel2
+            // 
+            this.colorPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel2.Location = new System.Drawing.Point(25, 423);
+            this.colorPanel2.Name = "colorPanel2";
+            this.colorPanel2.Size = new System.Drawing.Size(40, 40);
+            this.colorPanel2.TabIndex = 1;
+            // 
+            // ChangeColorLink
+            // 
+            this.ChangeColorLink.AutoSize = true;
+            this.ChangeColorLink.Location = new System.Drawing.Point(73, 410);
+            this.ChangeColorLink.Name = "ChangeColorLink";
+            this.ChangeColorLink.Size = new System.Drawing.Size(58, 13);
+            this.ChangeColorLink.TabIndex = 3;
+            this.ChangeColorLink.TabStop = true;
+            this.ChangeColorLink.Text = "Поменять";
+            this.ChangeColorLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ChangeColorLink_LinkClicked);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(12, 366);
+            this.trackBar1.Maximum = 79;
+            this.trackBar1.Minimum = 5;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(130, 38);
+            this.trackBar1.TabIndex = 4;
+            this.trackBar1.TickFrequency = 3;
+            this.trackBar1.Value = 5;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // AnT
             // 
@@ -133,62 +189,11 @@
             this.AnT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnT.Location = new System.Drawing.Point(3, 3);
             this.AnT.Name = "AnT";
-            this.AnT.Size = new System.Drawing.Size(562, 377);
+            this.AnT.Size = new System.Drawing.Size(653, 472);
             this.AnT.StencilBits = ((byte)(0));
             this.AnT.TabIndex = 0;
             this.AnT.Click += new System.EventHandler(this.AnT_Click);
             this.AnT.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AnT_MouseMove);
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(14, 292);
-            this.trackBar1.Maximum = 79;
-            this.trackBar1.Minimum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(116, 45);
-            this.trackBar1.TabIndex = 4;
-            this.trackBar1.TickFrequency = 3;
-            this.trackBar1.Value = 5;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
-            // 
-            // ChangeColorLink
-            // 
-            this.ChangeColorLink.AutoSize = true;
-            this.ChangeColorLink.Location = new System.Drawing.Point(72, 343);
-            this.ChangeColorLink.Name = "ChangeColorLink";
-            this.ChangeColorLink.Size = new System.Drawing.Size(58, 13);
-            this.ChangeColorLink.TabIndex = 3;
-            this.ChangeColorLink.TabStop = true;
-            this.ChangeColorLink.Text = "Поменять";
-            this.ChangeColorLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ChangeColorLink_LinkClicked);
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.Location = new System.Drawing.Point(14, 343);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Size = new System.Drawing.Size(40, 40);
-            this.colorPanel1.TabIndex = 2;
-            this.colorPanel1.DoubleClick += new System.EventHandler(this.colorPanel1_DoubleClick);
-            // 
-            // colorPanel2
-            // 
-            this.colorPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel2.Location = new System.Drawing.Point(26, 356);
-            this.colorPanel2.Name = "colorPanel2";
-            this.colorPanel2.Size = new System.Drawing.Size(40, 40);
-            this.colorPanel2.TabIndex = 1;
-            // 
-            // LayersListBox
-            // 
-            this.LayersListBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LayersListBox.FormattingEnabled = true;
-            this.LayersListBox.Location = new System.Drawing.Point(0, 3);
-            this.LayersListBox.Name = "LayersListBox";
-            this.LayersListBox.Size = new System.Drawing.Size(141, 274);
-            this.LayersListBox.TabIndex = 0;
-            this.LayersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LayersListBox_ItemCheck);
-            this.LayersListBox.SelectedIndexChanged += new System.EventHandler(this.LayersListBox_SelectedIndexChanged);
             // 
             // ModeToolStrip
             // 
@@ -263,7 +268,7 @@
             this.LayersMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(761, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(865, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -372,12 +377,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 432);
+            this.ClientSize = new System.Drawing.Size(865, 502);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(777, 470);
-            this.MinimumSize = new System.Drawing.Size(777, 470);
+            this.MinimumSize = new System.Drawing.Size(881, 540);
             this.Name = "MainForm";
             this.Text = "Простой растровый редактор";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -388,11 +392,9 @@
             this.toolStripContainer1.RightToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ModeToolStrip.ResumeLayout(false);
             this.ModeToolStrip.PerformLayout();
@@ -420,7 +422,6 @@
         private System.Windows.Forms.ToolStripMenuItem LayersMenu;
         private System.Windows.Forms.ToolStripMenuItem AddLayerTool;
         private System.Windows.Forms.ToolStripMenuItem RemoveLayerTool;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private Tao.Platform.Windows.SimpleOpenGlControl AnT;
         private System.Windows.Forms.CheckedListBox LayersListBox;
         private System.Windows.Forms.Timer RenderTimer;
@@ -438,6 +439,8 @@
         private System.Windows.Forms.ToolStripMenuItem SavePicture;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -148,5 +148,6 @@ namespace SimplePaint
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 Engine.GetResultBitMap().Save(saveFileDialog1.FileName);
         }
+
     }
 }
