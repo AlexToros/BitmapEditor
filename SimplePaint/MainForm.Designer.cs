@@ -278,6 +278,7 @@
             this.NewBitmapTool.Name = "NewBitmapTool";
             this.NewBitmapTool.Size = new System.Drawing.Size(161, 22);
             this.NewBitmapTool.Text = "Новый рисунок";
+            this.NewBitmapTool.Click += new System.EventHandler(this.NewBitmapTool_Click);
             // 
             // ExitTool
             // 

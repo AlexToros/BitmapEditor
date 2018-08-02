@@ -8,6 +8,7 @@ using Tao.FreeGlut;
 using Tao.OpenGl;
 using Tao.Platform.Windows;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace SimplePaint
 {
@@ -175,6 +176,51 @@ namespace SimplePaint
             if (ActiveLayer == Layers.First()) throw new InvalidOperationException("Невозможно удалить главный слой");
             Layers.Remove(ActiveLayer);
             ActiveLayer = Layers.First();
+        }
+
+        public Bitmap GetResultBitMap()
+        {
+            Bitmap result = new Bitmap(picture_width, picture_height);
+            for (int i = 0; i < picture_width; i++)
+                for (int j = 0; j < picture_height; j++)
+                {
+                    for (int l = LayersCount-1; l >= 0; l--)
+                    {
+                        short[,,] temp = Layers[l].DrawPlace;
+                        if (temp[i, j, 3] == 0)
+                        {
+                            result.SetPixel(i, j, Color.FromArgb(temp[i, j, 0], temp[i, j, 1], temp[i, j, 2]));
+                            break;
+                        }
+                        else if (l == 0)
+                        {
+                            result.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                        }
+                    }
+                }
+            result.RotateFlip(RotateFlipType.Rotate180FlipX);
+            return result;
+        }
+
+        public void SetImageToMainLayer(Bitmap bitmap)
+        {
+            bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+            var data = bitmap.LockBits(new Rectangle(0, 0, picture_width, picture_height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
+
+            byte[] pixels = new byte[data.Stride];
+            for (int i = 0; i < picture_height && i<bitmap.Height; i++)
+            {
+                Marshal.Copy(data.Scan0 + i * data.Stride, pixels, 0, data.Stride);
+                for (int j = 0; j < picture_width && j < bitmap.Width; j++)
+                {
+                    int indx = j * 4;
+                    ActiveLayer.DrawPlace[j, i, 0] = pixels[indx];
+                    ActiveLayer.DrawPlace[j, i, 1] = pixels[++indx];
+                    ActiveLayer.DrawPlace[j, i, 2] = pixels[++indx];
+                    ActiveLayer.DrawPlace[j, i, 3] = 0;
+                }
+            }
+            bitmap.UnlockBits(data);
         }
         #endregion
 

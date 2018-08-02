@@ -135,5 +135,10 @@ namespace SimplePaint
         {
             Engine.ChangeSize(trackBar1.Value);
         }
+
+        private void NewBitmapTool_Click(object sender, EventArgs e)
+        {
+            Engine.SetImageToMainLayer((Bitmap)Bitmap.FromFile(@"C:\Users\Алекс\Pictures\1.jpg"));
+        }
     }
 }
