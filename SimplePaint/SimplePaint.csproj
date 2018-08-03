@@ -59,7 +59,8 @@
     <Compile Include="Engine\Brushes\CircleBrush.cs" />
     <Compile Include="Engine\Brushes\EraseBrush.cs" />
     <Compile Include="Engine\EngineGL.cs" />
-    <Compile Include="Engine\Filters\IFilter.cs" />
+    <Compile Include="Engine\Filters\Filter.cs" />
+    <Compile Include="Engine\Filters\InverseFilter.cs" />
     <Compile Include="Engine\Layers\HiddenLayer.cs" />
     <Compile Include="Engine\Layers\Layer.cs" />
     <Compile Include="MainForm.cs">
