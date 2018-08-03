@@ -62,6 +62,12 @@
             this.changeColor = new System.Windows.Forms.ColorDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.FiltersTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.InverseFilterTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContrastTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.BlurringFilterTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmbossingFilterTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.WatercolorFilterTool = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -265,7 +271,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.DrawingMenu,
-            this.LayersMenu});
+            this.LayersMenu,
+            this.FiltersTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(865, 24);
@@ -373,6 +380,49 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // FiltersTools
+            // 
+            this.FiltersTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InverseFilterTool,
+            this.ContrastTool,
+            this.BlurringFilterTool,
+            this.EmbossingFilterTool,
+            this.WatercolorFilterTool});
+            this.FiltersTools.Name = "FiltersTools";
+            this.FiltersTools.Size = new System.Drawing.Size(126, 20);
+            this.FiltersTools.Text = "Применить фильтр";
+            // 
+            // InverseFilterTool
+            // 
+            this.InverseFilterTool.Name = "InverseFilterTool";
+            this.InverseFilterTool.Size = new System.Drawing.Size(183, 22);
+            this.InverseFilterTool.Text = "Инверсия цвета";
+            this.InverseFilterTool.Click += new System.EventHandler(this.InverseFilterTool_Click);
+            // 
+            // ContrastTool
+            // 
+            this.ContrastTool.Name = "ContrastTool";
+            this.ContrastTool.Size = new System.Drawing.Size(183, 22);
+            this.ContrastTool.Text = "Увеличить резкость";
+            // 
+            // BlurringFilterTool
+            // 
+            this.BlurringFilterTool.Name = "BlurringFilterTool";
+            this.BlurringFilterTool.Size = new System.Drawing.Size(183, 22);
+            this.BlurringFilterTool.Text = "Размытие";
+            // 
+            // EmbossingFilterTool
+            // 
+            this.EmbossingFilterTool.Name = "EmbossingFilterTool";
+            this.EmbossingFilterTool.Size = new System.Drawing.Size(183, 22);
+            this.EmbossingFilterTool.Text = "Тиснение";
+            // 
+            // WatercolorFilterTool
+            // 
+            this.WatercolorFilterTool.Name = "WatercolorFilterTool";
+            this.WatercolorFilterTool.Size = new System.Drawing.Size(183, 22);
+            this.WatercolorFilterTool.Text = "Акварель";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +491,12 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem FiltersTools;
+        private System.Windows.Forms.ToolStripMenuItem InverseFilterTool;
+        private System.Windows.Forms.ToolStripMenuItem ContrastTool;
+        private System.Windows.Forms.ToolStripMenuItem BlurringFilterTool;
+        private System.Windows.Forms.ToolStripMenuItem EmbossingFilterTool;
+        private System.Windows.Forms.ToolStripMenuItem WatercolorFilterTool;
     }
 }
 

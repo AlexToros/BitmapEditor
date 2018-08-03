@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Calculating;
+using Calculating; 
 
 namespace SimplePaint
 {
@@ -149,6 +149,13 @@ namespace SimplePaint
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 Engine.GetResultBitMap().Save(saveFileDialog1.FileName);
         }
+        #region Кнопки фильтров
 
+        private void InverseFilterTool_Click(object sender, EventArgs e)
+        {
+            //Engine.
+        }
+
+        #endregion
     }
 }
