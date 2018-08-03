@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimplePaint
+namespace SimplePaint.Engine.Filters
 {
-    interface IFilter
+    class Filter
     {
-        void Apply(Layer layer);
     }
 }
