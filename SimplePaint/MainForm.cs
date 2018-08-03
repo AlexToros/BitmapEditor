@@ -100,7 +100,7 @@ namespace SimplePaint
         {
             Engine.CurrentBrush = new Brush(trackBar1.Value);
         }
-        
+
         private void BrushButton_Click(object sender, EventArgs e)
         {
             BrushTool_Click(sender, e);
@@ -140,7 +140,7 @@ namespace SimplePaint
         private void FromFileTool_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Изображения|*.jpg;*.bmp;*.jpeg;*.png";
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 Engine.SetImageToMainLayer((Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
         }
 
@@ -153,7 +153,27 @@ namespace SimplePaint
 
         private void InverseFilterTool_Click(object sender, EventArgs e)
         {
-            //Engine.
+            Engine.ApplyFilter(new InverseFilter());
+        }
+
+        private void ContrastTool_Click(object sender, EventArgs e)
+        {
+            Engine.ApplyFilter(new ContrastIncreaseFilter());
+        }
+
+        private void BlurringFilterTool_Click(object sender, EventArgs e)
+        {
+            Engine.ApplyFilter(new BlurringFilter());
+        }
+
+        private void EmbossingFilterTool_Click(object sender, EventArgs e)
+        {
+            Engine.ApplyFilter(new EmbosingFilter());
+        }
+
+        private void WatercolorFilterTool_Click(object sender, EventArgs e)
+        {
+            Engine.ApplyFilter(new WatercolorFilter());
         }
 
         #endregion

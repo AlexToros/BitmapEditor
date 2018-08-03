@@ -16,7 +16,7 @@ namespace SimplePaint
         }
         public override void Apply(Layer layer)
         {
-            PixelTransformation(layer, KernelMaps[0], 0, 2, true);
+            PixelTransformation(layer.DrawPlace, KernelMaps[0], 0, 2, true,true);
         }
     }
 }

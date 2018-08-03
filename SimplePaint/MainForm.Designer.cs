@@ -404,24 +404,28 @@
             this.ContrastTool.Name = "ContrastTool";
             this.ContrastTool.Size = new System.Drawing.Size(183, 22);
             this.ContrastTool.Text = "Увеличить резкость";
+            this.ContrastTool.Click += new System.EventHandler(this.ContrastTool_Click);
             // 
             // BlurringFilterTool
             // 
             this.BlurringFilterTool.Name = "BlurringFilterTool";
             this.BlurringFilterTool.Size = new System.Drawing.Size(183, 22);
             this.BlurringFilterTool.Text = "Размытие";
+            this.BlurringFilterTool.Click += new System.EventHandler(this.BlurringFilterTool_Click);
             // 
             // EmbossingFilterTool
             // 
             this.EmbossingFilterTool.Name = "EmbossingFilterTool";
             this.EmbossingFilterTool.Size = new System.Drawing.Size(183, 22);
             this.EmbossingFilterTool.Text = "Тиснение";
+            this.EmbossingFilterTool.Click += new System.EventHandler(this.EmbossingFilterTool_Click);
             // 
             // WatercolorFilterTool
             // 
             this.WatercolorFilterTool.Name = "WatercolorFilterTool";
             this.WatercolorFilterTool.Size = new System.Drawing.Size(183, 22);
             this.WatercolorFilterTool.Text = "Акварель";
+            this.WatercolorFilterTool.Click += new System.EventHandler(this.WatercolorFilterTool_Click);
             // 
             // MainForm
             // 

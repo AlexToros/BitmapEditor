@@ -294,6 +294,11 @@ namespace SimplePaint
         {
             CurrentBrush.ChangeSize(newSize);
         }
+
+        internal void ApplyFilter(Filter filter)
+        {
+            filter.Apply(ActiveLayer);
+        }
         #endregion
     }
 }

@@ -8,7 +8,7 @@ namespace SimplePaint
 {
     class WatercolorFilter : Filter
     {
-        public WatercolorFilter()
+        public WatercolorFilter() : base()
         {
             KernelMaps.Add(new float[9]);
 
@@ -23,8 +23,8 @@ namespace SimplePaint
         }
         public override void Apply(Layer layer)
         {
-            PixelTransformation(layer, KernelMaps[0], 0, 2, true);
-            PixelTransformation(layer, KernelMaps[1], 0, 1, false);
+            short[,,] temp = PixelTransformation(layer.DrawPlace, KernelMaps[0], 0, 2, true,false);
+            layer.DrawPlace = PixelTransformation(temp, KernelMaps[1], 0, 1, false,false);
         }
     }
 }

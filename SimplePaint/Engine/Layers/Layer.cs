@@ -14,7 +14,7 @@ namespace SimplePaint
         /// <summary>
         /// модель холста. Координаты пикселя и его цвет
         /// </summary>
-        public short[,,] DrawPlace { get; private set; }
+        public short[,,] DrawPlace { get; internal set; }
         public int Width { get; private set; }
         public int Heigth { get; private set; }
         public bool IsVisible { get; set; }
@@ -72,7 +72,7 @@ namespace SimplePaint
                     }
             }
         }
-
+        
         /// <summary>
         /// Отрисовка всего слоя
         /// </summary>
