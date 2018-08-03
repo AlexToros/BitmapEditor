@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Calculating">
+      <HintPath>..\Calculating\bin\Debug\Calculating.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,7 @@
     <Compile Include="Engine\Brushes\CircleBrush.cs" />
     <Compile Include="Engine\Brushes\EraseBrush.cs" />
     <Compile Include="Engine\EngineGL.cs" />
+    <Compile Include="Engine\Filters\IFilter.cs" />
     <Compile Include="Engine\Layers\HiddenLayer.cs" />
     <Compile Include="Engine\Layers\Layer.cs" />
     <Compile Include="MainForm.cs">

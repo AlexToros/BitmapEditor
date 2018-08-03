@@ -381,7 +381,7 @@
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(881, 540);
+            this.MinimumSize = new System.Drawing.Size(16, 540);
             this.Name = "MainForm";
             this.Text = "Простой растровый редактор";
             this.Load += new System.EventHandler(this.Form1_Load);
